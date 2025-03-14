@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bu0l6r2pqq0ap"]
 
-[ext_resource type="Script" path="res://scenes/effects/move_marker.gd" id="1_52jh3"]
+[ext_resource type="Script" uid="uid://djhcdgl20joki" path="res://scenes/effects/move_marker.gd" id="1_52jh3"]
 
 [sub_resource type="Animation" id="Animation_oefca"]
 resource_name = "shrink_ring"
@@ -15,7 +15,7 @@ tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.5, 1, 0.01, 1, 0.01)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hlojs"]
 _data = {
-"shrink_ring": SubResource("Animation_oefca")
+&"shrink_ring": SubResource("Animation_oefca")
 }
 
 [sub_resource type="TorusMesh" id="TorusMesh_c5574"]

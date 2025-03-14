@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://blfsajgbcnydr"]
 
-[ext_resource type="Script" path="res://ui/shops/item_shop.gd" id="1_xtyap"]
+[ext_resource type="Script" uid="uid://bonq4js2xfor8" path="res://ui/shops/item_shop.gd" id="1_xtyap"]
 
 [node name="ItemShop" type="Control"]
 layout_mode = 3

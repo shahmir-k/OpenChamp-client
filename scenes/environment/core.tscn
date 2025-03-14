@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://cid84wkttj8mg"]
 
 [ext_resource type="PackedScene" path="model://openchamp:environment/core" id="1_tni3d"]
 [ext_resource type="Material" path="material://openchamp:environment/core/crystal_core.base" id="2_se1vl"]

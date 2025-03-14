@@ -4,7 +4,7 @@
 [ext_resource type="Material" path="material://openchamp:environment/tower/tower" id="3_470ry"]
 [ext_resource type="Material" path="material://openchamp:environment/tower/tower_banner_base" id="4_qy6qh"]
 [ext_resource type="Material" path="material://openchamp:environment/tower/tower_golden_ring" id="5_r85c7"]
-[ext_resource type="Script" path="res://scenes/environment/tower.gd" id="6_wlpik"]
+[ext_resource type="Script" uid="uid://cqinpjoei48ja" path="res://scenes/environment/tower.gd" id="6_wlpik"]
 
 [node name="tower" instance=ExtResource("1_tni3f")]
 script = ExtResource("6_wlpik")

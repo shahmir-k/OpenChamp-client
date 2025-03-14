@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6dc1hvgja2op"]
 
-[ext_resource type="Script" path="res://addons/index_manager/index_manager_dock.gd" id="1_akxf6"]
+[ext_resource type="Script" uid="uid://co8msidndeyv5" path="res://addons/index_manager/index_manager_dock.gd" id="1_akxf6"]
 
 [node name="IndexManagerDock" type="Control"]
 layout_mode = 3

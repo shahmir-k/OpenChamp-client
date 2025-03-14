@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bsbs7y6jrrvca"]
 
-[ext_resource type="Script" path="res://scenes/startup.gd" id="1_7agtl"]
+[ext_resource type="Script" uid="uid://gxfwno587ldj" path="res://scenes/startup.gd" id="1_7agtl"]
 [ext_resource type="Texture2D" path="texture://openchamp:openchamp" id="2_yrij0"]
 [ext_resource type="Shader" path="shader://openchamp:environment/fog" id="3_b4cv1"]
-[ext_resource type="Theme" uid="uid://e507d8q4wvpm" path="style://openchamp:themes/default_theme" id="4_h7jrb"]
+[ext_resource type="Theme" uid="uid://e507d8q4wvpm" path="res://default_assets/openchamp/styles/themes/default_theme.tres" id="4_h7jrb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0dm2"]
 bg_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
@@ -16,9 +16,9 @@ noise = SubResource("FastNoiseLite_8c74d")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_syct3"]
 shader = ExtResource("3_b4cv1")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2pvvu")
 shader_parameter/density = 0.06
 shader_parameter/speed = Vector2(0.02, 0.01)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_2pvvu")
 
 [node name="Startup" type="Node"]
 script = ExtResource("1_7agtl")

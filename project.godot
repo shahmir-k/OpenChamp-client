@@ -12,7 +12,7 @@ config_version=5
 
 config/name="OpenChamp"
 run/main_scene="res://scripts/init/init.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/image="res://default_assets/openchamp/textures/openchamp.png"
 config/icon="res://default_assets/openchamp/textures/openchamp.png"
 

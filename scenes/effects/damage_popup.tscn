@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dep7flq35e1h7"]
 
-[ext_resource type="Script" path="res://scenes/effects/damage_popup.gd" id="1_u18tb"]
+[ext_resource type="Script" uid="uid://dc3ogvmdvyeum" path="res://scenes/effects/damage_popup.gd" id="1_u18tb"]
 
 [sub_resource type="Animation" id="Animation_luy2e"]
 length = 0.001
@@ -114,8 +114,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vut4"]
 _data = {
-"RESET": SubResource("Animation_luy2e"),
-"pop_up": SubResource("Animation_cegw1")
+&"RESET": SubResource("Animation_luy2e"),
+&"pop_up": SubResource("Animation_cegw1")
 }
 
 [node name="DamagePopup" type="Node2D"]

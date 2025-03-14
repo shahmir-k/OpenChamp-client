@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bu1bxbv3d7rpj"]
 
-[ext_resource type="Script" path="res://ui/settings_menu/settings_menu.gd" id="1_g0wed"]
-[ext_resource type="Script" path="res://addons/sliderlabel/sliderlabel.gd" id="2_krd3l"]
+[ext_resource type="Script" uid="uid://djrxlmwa1r5ih" path="res://ui/settings_menu/settings_menu.gd" id="1_g0wed"]
+[ext_resource type="Script" uid="uid://dxhm3q3jqd6g1" path="res://addons/sliderlabel/sliderlabel.gd" id="2_krd3l"]
 
 [node name="SettingsMenu" type="Control"]
 z_index = 10

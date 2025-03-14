@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://50vm8rhcks4d"]
 
 [ext_resource type="Shader" path="shader://openchamp:environment/water" id="1_s0jik"]
 
@@ -28,24 +28,24 @@ noise = SubResource("FastNoiseLite_bnryf")
 render_priority = 0
 shader = ExtResource("1_s0jik")
 shader_parameter/albedo = Color(0, 0.65098, 1, 1)
-shader_parameter/albedo2 = null
+shader_parameter/albedo2 = Color(0, 0, 0, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.02
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_iaa00")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_nd37l")
 shader_parameter/wave_direction = Vector2(2, 0)
 shader_parameter/wave_direction2 = Vector2(0, 1)
 shader_parameter/time_scale = 0.025
 shader_parameter/noise_scale = 10.0
 shader_parameter/height_scale = 0.15
-shader_parameter/color_deep = null
-shader_parameter/color_shallow = null
+shader_parameter/color_deep = Color(0, 0, 0, 1)
+shader_parameter/color_shallow = Color(0, 0, 0, 1)
 shader_parameter/beers_law = 2.0
 shader_parameter/depth_offset = -0.75
 shader_parameter/edge_scale = 0.1
 shader_parameter/near = 1.0
 shader_parameter/far = 100.0
-shader_parameter/edge_color = null
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_iaa00")
-shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_nd37l")
+shader_parameter/edge_color = Color(0, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_j5t4w"]
 material = SubResource("ShaderMaterial_dix8n")
