@@ -125,7 +125,7 @@ func get_tooltip_string(character: Unit) -> String:
 	var tooltip_string = ""
 	var can_be_upgraded = can_upgrade()
 
-	var display_level = _level
+	var display_level = _level + 1
 	if _current_effect == null:
 		display_level = 0
 
@@ -143,7 +143,7 @@ func get_tooltip_string(character: Unit) -> String:
 		tooltip_string += "Current Effect:\n%s\n\n" % current_effect_desc
 
 	if can_be_upgraded:
-		var next_effect_desc = _ability_levels[_level].get_description_string(character, "UNIT")
+		var next_effect_desc = _ability_levels[_level + 1].get_description_string(character, "UNIT")
 		tooltip_string += "Next Effect:\n%s" % next_effect_desc
 
 	return tooltip_string
@@ -218,10 +218,18 @@ func upgrade() -> bool:
 		remove_child(_current_effect)
 		_current_effect = null
 
-	_current_effect = _ability_levels[_level]
 	_level += 1
+	_current_effect = _ability_levels[_level]
 
 	add_child(_current_effect)
 	_current_effect.connect_to_unit(_connected_unit)
 
 	return true
+	
+func get_cost() -> String:
+	if _current_effect != null:
+		var action_effect = _current_effect as ActiveActionEffect
+		return str(action_effect.cost)
+	else:
+		var action_effect = _ability_levels[0] as ActiveActionEffect
+		return str(action_effect.cost)

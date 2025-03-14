@@ -666,7 +666,11 @@ func can_change_target() -> bool:
 
 func can_take_damage() -> bool:
 	return cc_state & CCTypesRegistry.CC_MASK_TAKE_DAMAGE == 0
-
+	
+func spend_mana(amount: int):
+	var old_stats = current_stats.get_copy()
+	current_stats.mana -=amount
+	current_stats_changed.emit(old_stats, current_stats)
 
 func _passive_regen_handler():
 	if not is_alive:
@@ -723,8 +727,7 @@ func _damage_actually_dealt(
 	if total_vamp > 0:
 		var heal_amount = int(damage * total_vamp * 0.01)
 		self.healed.emit(self, self, heal_amount, SourceType.LIFESTEAL)
-
-
+	
 func _healed_handler(_caster: Unit, target: Unit, amount: float, src: SourceType):
 	if target != self:
 		return
@@ -752,20 +755,6 @@ func get_current_state_name() -> String:
 
 @rpc("authority", "call_local")
 func upgrade_ability(ability_name):
-	if not abilities.has(ability_name):
-		print("Character does not have ability: " + ability_name)
-		return
-
-	var ability = abilities[ability_name] as Ability
-	if not ability:
-		print("Failed to find ability: " + ability_name)
-		return
-
-	if not ability.upgrade():
-		print("Failed to upgrade ability: " + ability_name)
-		return
-
-	ability_upgrade_points -= 1
 	current_stats_changed.emit(current_stats, current_stats)
 
 

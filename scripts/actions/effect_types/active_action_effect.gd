@@ -7,6 +7,7 @@ var windup_ratio: float = 0.2
 var in_casting_preview: bool = false
 var casting_range: float = 0.0
 var use_attack_range: bool = false
+var cost: int = 0
 
 var channel_time: float = 0.0
 var active_time: float = 0.0
@@ -54,6 +55,7 @@ func init_from_dict(_dict: Dictionary, _is_ability: bool = false) -> bool:
 
 	use_attack_range = JsonHelper.get_optional_bool(_dict, "use_attack_range", false)
 	casting_range = JsonHelper.get_optional_number(_dict, "casting_range", 0.0)
+	cost = JsonHelper.get_optional_number(_dict, "cost", 0)
 
 	cooldown_time = JsonHelper.get_optional_number(_dict, "cooldown", 0.0)
 	channel_time = JsonHelper.get_optional_number(_dict, "channel_time", 0.0)
@@ -77,6 +79,7 @@ func get_copy(new_effect: ActionEffect = null) -> ActionEffect:
 	new_fx.in_casting_preview = in_casting_preview
 	new_fx.casting_range = casting_range
 	new_fx.use_attack_range = use_attack_range
+	new_fx.cost = cost
 
 	new_fx.scaling_string = scaling_string
 	new_fx.scaling_calc = scaling_calc
@@ -98,22 +101,23 @@ func stop_preview_cast(_caster: Unit) -> void:
 
 
 func activate(caster: Unit, target) -> ActivationState:
-	match _activation_state:
-		ActivationState.NONE:
-			print("Could not activate ability. Ability has no activation state.")
-			return ActivationState.NONE
+	if caster.current_stats.mana >= cost:
+		match _activation_state:
+			ActivationState.NONE:
+				print("Could not activate ability. Ability has no activation state.")
+				return ActivationState.NONE
 
-		ActivationState.COOLDOWN, ActivationState.CHANNELING, ActivationState.ACTIVE:
-			return _activation_state
+			ActivationState.COOLDOWN, ActivationState.CHANNELING, ActivationState.ACTIVE:
+				return _activation_state
 
-		ActivationState.READY:
-			_start_targeting(caster)
+			ActivationState.READY:
+				_start_targeting(caster)
 
-		ActivationState.TARGETING:
-			_finish_targeting(caster, target)
+			ActivationState.TARGETING:
+				_finish_targeting(caster, target)
 
-		_:
-			print("Could not activate ability. Unknown activation state.")
+			_:
+				print("Could not activate ability. Unknown activation state.")
 
 	return _activation_state
 
@@ -146,6 +150,7 @@ func _finish_targeting(caster: Unit, target) -> bool:
 
 
 func _start_channeling(caster: Unit, target) -> bool:
+	caster.spend_mana(cost)
 	_activation_state = ActivationState.CHANNELING
 
 	var final_channel_time: float = channel_time

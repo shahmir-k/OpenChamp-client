@@ -185,15 +185,16 @@ func _update_abilities():
 			continue
 
 		var tooltip = ability.get_tooltip_string(_character)
-		var ability_box = _create_ability_box(icon, tooltip, "")
+		var ability_box = _create_ability_box(icon, tooltip, ability.get_cost())
 		if ability_box == null:
 			print("Failed to create ability box for %s" % ability_name)
 			continue
 
 		var ability_container := VBoxContainer.new()
 		abilities_container.size_flags_vertical = Control.SIZE_SHRINK_END
+		ability_container.set_alignment(2)#ALIGN_END
 
-		if _character.ability_upgrade_points > 0:
+		if _character.ability_upgrade_points > 0 && ability.can_upgrade():
 			var upgrade_button = Button.new()
 
 			upgrade_button.icon = upgrade_icon
@@ -208,7 +209,6 @@ func _update_abilities():
 			var upgrade_function = _map.rpc_id.bind(
 				get_multiplayer_authority(), "upgrade_ability", ability_name
 			)
-
 			upgrade_button.pressed.connect(upgrade_function)
 			ability_container.add_child(upgrade_button)
 
@@ -266,9 +266,11 @@ func _create_ability_box(icon: Texture2D, tooltip: String, text: String, passive
 		print("Failed to instantiate ability box")
 		return null
 
+	var aspect_box = ability_box.get_node("AspectBox")
 	var ability_box_bg = ability_box.get_node("AspectBox/Background")
-	if ability_box_bg == null:
-		print("Failed to get ability box bg")
+	
+	if aspect_box == null || ability_box_bg == null:
+		print("Failed to get ability box")
 		return ability_box
 
 	if icon != null:
@@ -285,7 +287,7 @@ func _create_ability_box(icon: Texture2D, tooltip: String, text: String, passive
 			ability_box.custom_minimum_size = ABILITY_ICON_SIZE
 			ability_box_bg.custom_minimum_size = ABILITY_ICON_SIZE
 
-		if tooltip != "":
+		if tooltip != "" && text == "":
 			ability_box_icon.tooltip_text = tooltip
 			ability_box_icon.mouse_filter = Control.MOUSE_FILTER_PASS
 
@@ -293,8 +295,13 @@ func _create_ability_box(icon: Texture2D, tooltip: String, text: String, passive
 
 	if text != "":
 		var item_box_label = RichTextLabel.new()
-		item_box_label.text = text
-		ability_box_bg.add_child(item_box_label)
+		item_box_label.bbcode_enabled = true
+		item_box_label.text = "[font_size=10][right]"+text+"[/right]"
+		if tooltip != "":
+			item_box_label.tooltip_text = tooltip
+			item_box_label.mouse_filter = Control.MOUSE_FILTER_PASS
+		aspect_box.add_child(item_box_label)
+		aspect_box.get_children()
 
 	return ability_box
 
