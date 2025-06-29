@@ -8,6 +8,10 @@ source venv/bin/activate
 pip install requests
 ```
 
+This is because on linux we have to make a virtual environment(venv) for python for each project folder to not cause mismatch issues
+source venv/bin/activate... activates the venv. We must do this everything we open a new terminal in the project folder
+pip install requests... installs the only dependency that install.py needs into our local python venv
+
 When I was setting up the repo I got
 
 "A submodule points to a commit which does not exist" error
@@ -44,7 +48,7 @@ git submodule add https://github.com/OpenChamp/default_assets default_assets
 ```
 
 
-This still didn't work 
+This still didn't work so I did:
 
 ```
 git rm --cached default_assets
@@ -64,3 +68,6 @@ git commit -m "Fix broken default_assets submodule reference"
 ```
 git submodule update --init --recursive
 ```
+
+
+NOW IT IS FIXED!
