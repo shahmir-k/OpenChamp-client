@@ -42,3 +42,25 @@ now re-add the default_assets module:
 ```
 git submodule add https://github.com/OpenChamp/default_assets default_assets
 ```
+
+
+This still didn't work 
+
+```
+git rm --cached default_assets
+rm -rf default_assets
+rm -rf .git/modules/default_assets
+```
+
+```
+git submodule add https://github.com/OpenChamp/default_assets default_assets
+```
+
+```
+git add .gitmodules default_assets
+git commit -m "Fix broken default_assets submodule reference"
+```
+
+```
+git submodule update --init --recursive
+```
