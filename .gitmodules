@@ -5,3 +5,10 @@
 #[submodule "default_assets"]
 #	path = default_assets
 #	url = https://github.com/OpenChamp/default_assets
+[submodule "extensions/godot-cpp"]
+	path = extensions/godot-cpp
+	url = https://github.com/godotengine/godot-cpp
+	branch = 4.3
+[submodule "default_assets"]
+	path = default_assets
+	url = https://github.com/OpenChamp/default_assets

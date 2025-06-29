@@ -37,3 +37,6 @@ extensions/cross_compile_stuff/*
 # aseprite stuff
 utility_scripts/aseprite
 utility_scripts/skia
+
+#linux specific ignores
+venv
