@@ -12,3 +12,4 @@
 [submodule "default_assets"]
 	path = default_assets
 	url = https://github.com/OpenChamp/default_assets
+	branch = main
